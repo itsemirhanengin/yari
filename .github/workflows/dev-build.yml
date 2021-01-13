@@ -68,8 +68,9 @@ jobs:
       - uses: actions/checkout@v2
         if: "contains(github.event.inputs.translated_content, 'true')"
         with:
-          repository: mdn/translated-content-rendered
+          repository: fiji-flo/translated-content-rendered
           path: mdn/translated-content
+          ref: unslug-fr
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.4
