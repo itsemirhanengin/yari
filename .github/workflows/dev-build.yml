@@ -51,13 +51,14 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          repository: mdn/content
+          repository: fiji-flo/content
           path: mdn/content
           # Yes, this means fetch EVERY COMMIT EVER.
           # It's probably not sustainable in the far future (e.g. past 2021)
           # but for now it's good enough. We'll need all the history
           # so we can figure out each document's last-modified date.
           fetch-depth: 0
+          ref: decode-redirects-en-us
 
       - uses: actions/checkout@v2
         if: "contains(github.event.inputs.archived_content, 'true')"
@@ -68,8 +69,9 @@ jobs:
       - uses: actions/checkout@v2
         if: "contains(github.event.inputs.translated_content, 'true')"
         with:
-          repository: mdn/translated-content-rendered
+          repository: fiji-flo/translated-content-rendered
           path: mdn/translated-content
+          ref: decode-redirects
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.4
